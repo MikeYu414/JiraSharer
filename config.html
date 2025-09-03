@@ -1,0 +1,227 @@
+<html>
+
+<head>
+	<title>Group Config</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<link rel="stylesheet" type="text/css" href="ave_jquery_easyui.css">
+	<link rel="stylesheet" type="text/css" href="icon.css">
+	<script src="ave_jquery.js" type="text/javascript"></script>
+	<script src="ave_jquery_easyui.js" type="text/javascript"></script>
+	<script src="config.js"></script>
+	<style type="text/css">
+		body {
+			background-color: #fff;
+			user-select: none;
+		}
+
+		.title {
+			margin-top: 16px;
+			font-size: 20px;
+			margin-left: 30px;
+			font-weight: 400;
+			font-family: SegoeUI-Semibold, "Segoe UI Semibold", "Segoe UI Regular", "Segoe UI";
+		}
+
+		.container {
+			height: calc(100% - 100px);
+			margin: 0 20px;
+		}
+
+		.btn {
+			height: 30px;
+			margin-bottom: 8px;
+			display: flex;
+		}
+
+		.datagrid-cell .easyui-linkbutton {
+			margin: 0 3px;
+			padding: 0 6px;
+		}
+
+		.datagrid-row {
+			height: 40px;
+			text-align: center;
+		}
+
+		.datagrid-body td {
+			border-width: 0 0 1px 0 !important;
+			border-bottom: 2px solid #f4f4f4 !important;
+		}
+
+		.datagrid-header td {
+			border-right: 1px solid rgb(196, 196, 196) !important;
+			height: 20px;
+			opacity: 1;
+			border-bottom: 2px solid rgb(225, 223, 221) !important;
+		}
+
+		.panel-body {
+			border-width: 0 !important;
+		}
+
+		.datagrid-row-over {
+			background: rgb(216, 216, 216) !important;
+		}
+
+		.datagrid-row-selected {
+			background: rgb(192, 212, 232) !important;
+		}
+
+		.datagrid-htable,
+		.datagrid-btable,
+		.datagrid-ftable,
+		.datagrid-cell,
+		.datagrid-cell-group,
+		.datagrid-header-rownumber {
+			font: normal normal normal 15px/20px SegoeUI, Segoe UI !important;
+			color: #000 !important;
+		}
+
+		.datagrid-header .datagrid-cell span {
+			font-size: 12px;
+			font-weight: normal;
+			font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+			color: rgb(110, 111, 119);
+		}
+
+		.spinner {
+			height: 35px !important;
+		}
+
+		.datagrid-header-check {
+			visibility: hidden;
+		}
+
+		.datagrid-header {
+			border: none !important;
+		}
+
+		.datagrid-cell {
+			text-align: left !important;
+		}
+
+		.pagination table {
+			float: right !important;
+		}
+
+		.pagination-info {
+			float: left !important;
+		}
+
+		.cursor-p:hover {
+			cursor: pointer;
+		}
+
+		.btn-add {
+			position: absolute;
+			right: 28px;
+		}
+
+		#dialog-content {
+			width: calc(100% - 16px);
+			height: calc(100% - 120px);
+			margin-top: 60px;
+			margin-left: 8px;
+			border: 1px solid;
+		}
+
+		.item {
+			display: flex;
+			width: 100%;
+			justify-content: left;
+			height: 30px;
+			font-size: 14px;
+			margin: 20;
+		}
+
+		.item input {
+			border-width: 1px;
+		}
+
+		#download {
+			position: absolute;
+			right: 50px;
+			top: 10px;
+		}
+
+		#download105 {
+			position: absolute;
+			right: 20px;
+			top: 10px;
+		}
+
+		.searchbox {
+			position: absolute;
+			right: 100px;
+		}
+
+		.search-label {
+			position: absolute;
+			right: 310px;
+			top: 61px;
+			font: normal normal normal 15px/20px SegoeUI, Segoe UI !important;
+		}
+
+		img {
+			width: 650px;
+			z-index: 99;
+			position: absolute;
+		}
+
+		#preview,
+		#preview105 {
+			top: 20px;
+			right: 0px;
+			display: none;
+		}
+
+		#download:hover #preview {
+			display: block !important;
+		}
+
+		#download105:hover #preview105 {
+			display: block !important;
+		}
+	</style>
+</head>
+
+<body>
+	<h1 class="title">JIRA Sharer Group Configration</h1>
+	<a id="download" href="" title="Click to Download Jira Sharer"><img id="preview" title="Jira Sharer"
+			src="images\preview.png" alt="">Download Jira Sharer</a>
+	<!-- <a id="download105" href="" title="Click to Download Jira Sharer 1.0.5"><img id="preview105" title="Jira Sharer 1.0.5" src="images\preview105.png" alt="">Download Jira Sharer(1.0.5)</a> -->
+	<div class="btn">
+		<span class="search-label">Search:</span>
+		<input id="search" class="easyui-searchbox" style="width:200px;"
+			data-options="prompt:'Please Input Group Name'">
+		<a id="btn_open" href="#" class="btn-add easyui-linkbutton" data-options="iconCls:'icon-add'">Add</a>
+	</div>
+	<div id="container" class="container">
+		<div id="datagrid" class="easyui-datagrid"></div>
+	</div>
+	<div id="dialog"
+		style="display:none;left: 50%; transform: translateX(-50%); position: absolute; z-index: 1006; border: 1px solid rgb(214, 214, 214); box-shadow: black 0px 0px 1em; background-color: white; width: 500px; max-height: 250px; height: 82%; top: 25%;">
+		<span id="btn-close" class="icon-cancel"
+			style="cursor: pointer;height:16px;width:16px;float: right;top: 20px;right: 40px;position: absolute;"></span>
+		<div id="dialog-content">
+			<div class="item">
+				<span style="width: 120px;text-align: right;">Group Name: </span>
+				<input id="groupname" style="width: 300px;margin-left: 12px;" type="text">
+			</div>
+			<div class="item">
+				<span style="width: 120px;text-align: right;">Robot Webhook: </span>
+				<input id="robot" style="width: 300px;margin-left: 12px;" type="text">
+			</div>
+		</div>
+		<div id="footer" style="position: absolute;bottom: 16px;right: 16px;">
+			<a id="btn_add" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">OK</a>
+			<a id="btn_cancel" href="#" style="margin-left: 16px;" class="easyui-linkbutton"
+				data-options="iconCls:'icon-cancel'">Cancel</a>
+		</div>
+	</div>
+	<div id="dialog_background"
+		style="display:none;position: fixed;width: 100%;height: 100%;top: 0;background-color: gray;z-index: 1005;opacity: 0.5;">
+	</div>
+</body>
+
+</html>
